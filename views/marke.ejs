@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="/styles/base.css">
+  <link rel="stylesheet" href="/styles/prikaz_generic.css">
+  <link rel="stylesheet" href="/styles/modal.css">
+  <script src="/scripts/servisiPopup.js" defer></script>
+</head>
+
+<body>
+  <%- include("partials/header_admin") %>
+
+    <div class="addBtn">
+      <a href="/marke/unos">Dodaj marku</a>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Šifra</th>
+          <th>Naziv</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% marke.forEach(function(marka) { %>
+          <tr>
+            <td>
+              <%= marka.sifra %>
+            </td>
+            <td>
+              <%= marka.naziv %>
+            </td>
+            <td>
+              <form action="/marke/<%= marka.sifra %>/remove" method="POST">
+                <button type="submit">Izbriši</button>
+              </form>
+            </td>
+          </tr>
+          <% }) %>
+      </tbody>
+    </table>
+
+    <%- include("partials/result_popup") %>
+</body>
+
+</html>

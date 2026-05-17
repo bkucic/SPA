@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="/styles/base.css">
+  <link rel="stylesheet" href="/styles/unos_generic.css">
+  <script src="/scripts/comparison.js" defer></script>
+</head>
+
+<body>
+  <%- include("partials/header_kupac") %>
+    <div class="page-container">
+      <form action="/login" method="POST" class="main_form">
+        <div>
+          <label for="username">Korisničko ime</label>
+          <input type="text" id="username" name="username" required />
+        </div>
+
+        <br />
+
+        <div>
+          <label for="password">Šifra</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+
+        <br />
+
+        <button type="submit" class="submitBtn">Prijavi se</button>
+      </form>
+    </div>
+</body>
+
+</html>

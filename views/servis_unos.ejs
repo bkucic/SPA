@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="/styles/base.css">
+    <link rel="stylesheet" href="/styles/unos_generic.css">
+</head>
+
+<body>
+    <%- include("partials/header_admin") %>
+        <div class="page-container">
+            <h1>Unos servisa</h1>
+
+            <form action="/automobili/<%= vozilo.sifra %>/servis" method="POST" class="main_form">
+
+                <div>
+                    <label for="tip_sifra">Tip servisa:</label>
+                    <select name="tip_sifra" required>
+                        <% tipovi_servisa.forEach(function(tip) { %>
+                            <option value="<%= tip.sifra %>">
+                                <%= tip.naziv %>
+                            </option>
+                            <% }) %>
+                    </select>
+                </div>
+
+                <% const today=new Date( Date.now() - new Date().getTimezoneOffset() * 60000 ) .toISOString() .split("T")[0] %>
+                    <div>
+                        <label for="datum">Datum servisa:</label>
+                        <input type="date" id="datum" name="datum" max="<%= today  %>">
+                    </div>
+
+                <button type="submit" class="submitBtn">Spremi promjene</button>
+            </form>
+        </div>
+</body>
+
+</html>

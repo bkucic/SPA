@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- <link rel="stylesheet" href="/styles/vozilo_rezervacija.css"> -->
+    <link rel="stylesheet" href="/styles/base.css">
+    <link rel="stylesheet" href="/styles/unos_generic.css">
+</head>
+
+<body>
+    <%- include("partials/header_kupac") %>
+        <div class="page-container">
+            <h1>Rezervacija vozila: <%= vozilo.naziv %>
+            </h1>
+            <form action="/automobili/<%= vozilo.sifra %>/rezerviraj" method="POST" class="main_form">
+
+                <div>
+                    <label for="ime">Ime:</label>
+                    <input type="text" maxlength="20" required id="ime" name="ime">
+                </div>
+
+                <div>
+                    <label for="prezime">Prezime:</label>
+                    <input type="text" maxlength="20" required id="prezime" name="prezime">
+                </div>
+
+                <div>
+                    <label for="oib">OIB:</label>
+                    <input type="text" minlength="11" maxlength="11" required id="oib" name="oib">
+                </div>
+
+                <div>
+                    <label for="adresa">Adresa:</label>
+                    <input type="text" maxlength="50" required id="adresa" name="adresa">
+                </div>
+                <% const today=new Date( Date.now() - new Date().getTimezoneOffset() * 60000 ) .toISOString()
+                    .split("T")[0] %>
+                    <div>
+                        <label for="datum">Datum dolaska:</label>
+                        <input type="date" required id="datum" name="datum" min="<%= today  %>">
+                    </div>
+
+                    <button type="submit" class="submitBtn">Spremi promjene</button>
+            </form>
+        </div>
+</body>
+
+</html>

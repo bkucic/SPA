@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="/styles/base.css">
+    <link rel="stylesheet" href="/styles/unos_generic.css">
+</head>
+
+<body>
+    <%- include("partials/header_admin") %>
+        <div class="page-container">
+            <h1>Unos Guma</h1>
+
+            <form action="/gume/unos" method="POST" class="main_form">
+
+                <div>
+                    <label for="naziv">Naziv:</label>
+                    <input type="text" maxlength="20" required id="naziv" name="naziv">
+                </div>
+
+                <div>
+                    <label for="sirina">Širina:</label>
+                    <input type="number" id="sirina" required name="sirina">
+                </div>
+
+                <div>
+                    <label for="omjer_visine_i_sirine">Omjer visine i širine:</label>
+                    <input type="number" min="0.01" max="1" step="0.01" required id="omjer_visine_i_sirine" name="omjer_visine_i_sirine">
+                </div>
+
+                <div>
+                    <label for="struktura">Struktura:</label>
+                    <input type="text" maxlength="5" required id="struktura" name="struktura">
+                </div>
+
+                <div>
+                    <label for="velicina_kotaca">Veličina kotača:</label>
+                    <input type="number" id="velicina_kotaca" required name="velicina_kotaca">
+                </div>
+
+                <button type="submit" class="submitBtn">Spremi promjene</button>
+            </form>
+        </div>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="/styles/base.css">
+  <link rel="stylesheet" href="/styles/prikaz_generic.css">
+  <link rel="stylesheet" href="/styles/modal.css">
+  <script src="/scripts/servisiPopup.js" defer></script>
+</head>
+
+<body>
+
+
+  <%- include("partials/header_admin") %>
+
+    <div class="addBtn">
+      <a href="/gume/unos">Dodaj gume</a>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Šifra</th>
+          <th>Naziv</th>
+          <th>Širina</th>
+          <th>Omjer visine i širine</th>
+          <th>Struktura</th>
+          <th>Veličina kotača</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% gume.forEach(function(guma) { %>
+          <tr>
+            <td>
+              <%= guma.sifra %>
+            </td>
+            <td>
+              <%= guma.naziv %>
+            </td>
+            <td>
+              <%= guma.sirina %>
+            </td>
+            <td>
+              <%= guma.omjer_visine_i_sirine %>
+            </td>
+            <td>
+              <%= guma.struktura %>
+            </td>
+            <td>
+              <%= guma.velicina_kotaca %>
+            </td>
+            <td>
+              <form action="/gume/<%= guma.sifra %>/remove" method="POST">
+                <button type="submit">Izbriši</button>
+              </form>
+            </td>
+          </tr>
+          <% }) %>
+      </tbody>
+    </table>
+
+  <%- include("partials/result_popup") %>
+
+</body>
+
+</html>

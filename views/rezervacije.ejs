@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="/styles/base.css">
+  <link rel="stylesheet" href="/styles/prikaz_generic.css">
+  <script src="/scripts/rezervacije.js" defer></script>
+  <script src="/scripts/comparison.js" defer></script>
+</head>
+
+<body>
+    <%- include("partials/header_admin") %>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Šifra</th>
+        <th>Datum</th>
+        <th>Vozilo šifra</th>
+        <th>Kupac OIB</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% rezervacije.forEach(function(rezervacija) { %>
+        <tr>
+          <td>
+            <%= rezervacija.sifra %>
+          </td>
+          <td>
+            <%= new Date(rezervacija.datum).toLocaleDateString('hr-HR') %>
+          </td>
+          <td>
+            <%= rezervacija.vozilo_sifra %>
+          </td>
+          <td>
+            <%= rezervacija.kupac_oib %>
+          </td>
+          <td>
+            <form action="/rezervacije/<%= rezervacija.sifra %>/remove" method="POST">
+              <button type="submit">Izbriši</button>
+            </form>
+          </td>
+        </tr>
+        <% }) %>
+    </tbody>
+  </table>
+</body>
+
+</html>

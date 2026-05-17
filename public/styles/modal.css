@@ -1,0 +1,79 @@
+.modal {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(0, 0, 0, 0.45);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 1000;
+
+  padding: 20px;
+}
+
+.modal-content {
+  position: relative;
+
+  width: 100%;
+  max-width: 600px;
+
+  background-color: white;
+
+  border-radius: 18px;
+
+  padding: 28px;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+
+  animation: modalFade 0.2s ease;
+}
+
+.modal-content h2 {
+  font-size: 24px;
+
+  margin-bottom: 20px;
+
+  color: #1f2937;
+}
+
+.close-modal {
+  position: absolute;
+
+  top: 16px;
+  right: 18px;
+
+  font-size: 28px;
+  font-weight: bold;
+
+  color: #6b7280;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.close-modal:hover {
+  color: #111827;
+  transform: scale(1.1);
+}
+
+/* animacija :D */
+@keyframes modalFade {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+

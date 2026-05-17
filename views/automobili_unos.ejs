@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="/styles/base.css">
+    <link rel="stylesheet" href="/styles/unos_generic.css">
+    <script src="/scripts/checkCompatibility.js" defer></script>
+</head>
+
+<body>
+    <%- include("partials/header_admin") %>
+
+        <div class="page-container">
+            <h1>Unos Vozila</h1>
+
+            <form action="/automobili/unos" method="POST" class="main_form">
+
+                <div>
+                    <label for="naziv">Naziv:</label>
+                    <input type="text" maxlength="20" required id="naziv" name="naziv">
+                </div>
+
+                <div>
+                    <label for="boja">Boja:</label>
+                    <input type="text" maxlength="20" required id="boja" name="boja">
+                </div>
+
+                <div>
+                    <label for="oblik">Oblik:</label>
+                    <input type="text" maxlength="20" required id="oblik" name="oblik">
+                </div>
+
+                <div>
+                    <label for="marka_sifra">Marka:</label>
+                    <select name="marka_sifra" required>
+                        <% marke.forEach(function(marka) { %>
+                            <option value="<%= marka.sifra %>">
+                                <%= marka.naziv %>
+                            </option>
+                            <% }) %>
+                    </select>
+                </div>
+
+                <div class="field-with-action">
+                    <label for="motor_sifra">Motor:</label>
+
+                    <div class="select-add-row">
+                        <select id="motorSelect" name="motor_sifra" required>
+                            <% motori.forEach(function(motor) { %>
+                                <option value="<%= motor.sifra %>" data-motor="<%= JSON.stringify(motor) %>">
+                                    <%= motor.naziv %>
+                                </option>
+                                <% }) %>
+                        </select>
+
+                        <a class="inline-button" href="/motori/unos">
+                            + Dodaj
+                        </a>
+                    </div>
+                </div>
+
+                <div class="field-with-action">
+                    <label for="guma_sifra">Gume:</label>
+
+                    <div class="select-add-row">
+                        <select id="gumaSelect" name="guma_sifra" required>
+                            <% gume.forEach(function(guma) { %>
+                                <option value="<%= guma.sifra %>" data-guma="<%= JSON.stringify(guma) %>">
+                                    <%= guma.naziv %>
+                                </option>
+                                <% }) %>
+                        </select>
+
+                        <a class="inline-button" href="/gume/unos">
+                            + Dodaj
+                        </a>
+                    </div>
+                </div>
+
+                <button type="submit" class="submitBtn">Spremi promjene</button>
+            </form>
+        </div>
+</body>
+
+</html>

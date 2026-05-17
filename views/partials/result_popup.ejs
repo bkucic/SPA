@@ -1,0 +1,24 @@
+    <% if (statusMessages.length> 0) { %>
+      <div id="serviceModal" class="modal" style="display: flex;">
+
+        <div class="modal-content">
+
+          <span class="close-modal" onclick="closeServiceModal()">
+
+            &times;
+
+          </span>
+
+          <div id="serviceList">
+                <div>
+                  <h2>Rezultat</h2>
+                        <p>
+                          <%= statusMessages %>
+                        </p>
+                </div>
+          </div>
+
+        </div>
+
+      </div>
+      <% } %>

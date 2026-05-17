@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="/styles/base.css">
+    <link rel="stylesheet" href="/styles/unos_generic.css">
+    <link rel="stylesheet" href="/styles/vozilo_extra.css">
+    <script src="/scripts/checkCompatibility.js" defer></script>
+    <script src="/scripts/vozilo.js" defer></script>
+</head>
+
+<body>
+    <%- include("partials/header_admin") %>
+
+        <div class="page-container">
+
+            <h1>Izmjena vozila: <%= vozilo.naziv %>
+            </h1>
+
+            <form action="/automobili/<%= vozilo.sifra %>" method="POST" class="main_form">
+
+                <div>
+                    <label for="naziv">Naziv:</label>
+                    <input type="text" maxlength="20" required id="naziv" name="naziv" value="<%= vozilo.naziv %>"
+                        <%=postojeRezervacije ? 'readonly' : '' %>>
+                </div>
+
+                <div>
+                    <label for="boja">Boja:</label>
+                    <input type="text" maxlength="20" required id="boja" name="boja" value="<%= vozilo.boja %>"
+                        <%=postojeRezervacije ? 'readonly' : '' %>>
+                </div>
+
+                <div>
+                    <label for="oblik">Oblik:</label>
+                    <input type="text" maxlength="20" required id="oblik" name="oblik" value="<%= vozilo.oblik %>"
+                        <%=postojeRezervacije ? 'readonly' : '' %>>
+                </div>
+
+                <div>
+                    <label for="marka_sifra">Marka:</label>
+                    <% if (postojeRezervacije) { %>
+                        <input type="text" value="<%= marke.find(m => m.sifra === vozilo.marka_sifra).naziv %>"
+                            readonly>
+                        <% } %>
+                            <select name="marka_sifra" required <%=postojeRezervacije ? 'hidden' : '' %>>
+                                <% marke.forEach(function(marka) { %>
+                                    <option value="<%= marka.sifra %>" <%=marka.sifra===vozilo.marka_sifra ? 'selected'
+                                        : '' %>>
+                                        <%= marka.naziv %>
+                                    </option>
+                                    <% }) %>
+                            </select>
+                </div>
+
+                <div class="field-with-action">
+                    <label for="motor_sifra">Motor:</label>
+                    <% if (postojeRezervacije) { %>
+                        <input type="text" value="<%= motori.find(m => m.sifra === vozilo.motor_sifra).naziv %>"
+                            readonly>
+                        <% } %>
+                            <div class="select-add-row">
+                                <select id="motorSelect" required name="motor_sifra" <%=postojeRezervacije ? 'hidden'
+                                    : '' %>>
+                                    <% motori.forEach(function(motor) { %>
+                                        <option value="<%= motor.sifra %>" <%=motor.sifra===vozilo.motor_sifra
+                                            ? 'selected' : '' %>
+                                            data-motor="<%= JSON.stringify(motor) %>">
+                                                <%= motor.naziv %>
+                                        </option>
+                                        <% }) %>
+                                </select>
+
+                                <a class="inline-button" href="/motori/unos" <%=postojeRezervacije ? 'hidden' : ''
+                                    %>>
+                                    + Dodaj
+                                </a>
+                            </div>
+                </div>
+
+                <div>
+                    <label>Volumen:</label>
+                    <span id="motorVolumen"></span>
+                </div>
+
+                <div>
+                    <label>Broj cilindara:</label>
+                    <span id="motorBrojCilindara"></span>
+                </div>
+
+                <div>
+                    <label>Konfiguracija:</label>
+                    <span id="motorKonfiguracija"></span>
+                </div>
+
+                <div class="field-with-action">
+                    <label for="guma_sifra">Gume:</label>
+
+                    <div class="select-add-row">
+                        <select id="gumaSelect" required name="guma_sifra">
+                            <% gume.forEach(function(guma) { %>
+                                <option value="<%= guma.sifra %>" <%=guma.sifra===vozilo.guma_sifra ? 'selected' : '' %>
+                                    data-guma="<%= JSON.stringify(guma) %>">
+                                        <%= guma.naziv %>
+                                </option>
+                                <% }) %>
+                        </select>
+
+                        <a class="inline-button" href="/gume/unos">
+                            + Dodaj
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <label>Širina:</label>
+                    <span id="gumaŠirina"></span>
+                </div>
+
+                <div>
+                    <label>Omjer visine i širine:</label>
+                    <span id="gumaOmjer"></span>
+                </div>
+
+                <div>
+                    <label>Struktura:</label>
+                    <span id="gumaStruktura"></span>
+                </div>
+
+                <div>
+                    <label>Veličina kotača:</label>
+                    <span id="gumaVelicinaKotaca"></span>
+                </div>
+
+                <button type="submit" class="submitBtn">Spremi promjene</button>
+            </form>
+            <form action="/automobili/<%= vozilo.sifra %>/remove" method="POST" class="deleteForm">
+                <button type="submit" class="deleteBtn">
+                    Izbriši vozilo
+                </button>
+            </form>
+
+            <!-- SERVISI -->
+
+            <div class="servisi-panel">
+
+                <div class="servisi-header">
+                    <h2>Servisi</h2>
+
+                    <a class="inline-button" href="/automobili/<%= vozilo.sifra %>/servis">
+                        + Dodaj servis
+                    </a>
+                </div>
+
+                <div class="servisi-body">
+
+                    <% servisi.forEach(servis=> { %>
+                        <div class="servis-row">
+
+                            <div class="servis-main">
+                                <div><strong>
+                                        <%= servis.tip_servisa_naziv %>
+                                    </strong></div>
+                                <div class="small">
+                                    <%= new Date(servis.datum).toLocaleDateString("hr-HR") %>
+                                </div>
+                            </div>
+
+                            <div class="servis-buttons">
+
+                                <a class="edit-servis-btn" href="/automobili/<%= vozilo.sifra %>/servis/<%= servis.sifra %>">
+                                    Uredi
+                                </a>
+
+                                <form action="/automobili/<%= vozilo.sifra %>/servis/<%= servis.sifra %>/remove"
+                                    method="POST">
+                                    <button type="submit" class="delete-servis-btn">
+                                        Izbriši
+                                    </button>
+                                </form>
+
+                            </div>
+
+                        </div>
+                        <% }) %>
+
+                </div>
+
+            </div>
+
+        </div>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+.car-header {
+  border-bottom: 2px solid #e5e7eb;
+
+  margin-bottom: 15px;
+  padding-bottom: 12px;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.car-header h2 {
+  font-size: 22px;
+  flex: 1;
+}
+
+/* uredi auto */
+.car-header a {
+  background-color: #2563eb;
+  color: white;
+
+  text-decoration: none;
+
+  padding: 8px 14px;
+
+  border-radius: 10px;
+
+  font-size: 13px;
+  font-weight: bold;
+
+  transition: 0.2s ease;
+}
+
+.car-header a:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-2px);
+}
+/* sifra */
+.car-id {
+  display: inline-block;
+
+  background-color: #dbeafe;
+  color: #1d4ed8;
+
+  padding: 5px 10px;
+
+  border-radius: 8px;
+
+  font-size: 12px;
+  font-weight: bold;
+}

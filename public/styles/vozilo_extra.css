@@ -1,0 +1,146 @@
+/* brise cijelo vozilo */
+.deleteForm {
+  width: 100%;
+  max-width: 700px;
+
+  margin-top: 12px;
+
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.deleteBtn {
+  width: 100%;
+
+  padding: 12px;
+
+  border-radius: 10px;
+  border: none;
+
+  background: #dc2626;
+  color: white;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.deleteBtn:hover {
+  background: #b91c1c;
+  transform: translateY(-1px);
+}
+
+/* SERVISI  */
+.servisi-panel {
+  width: 100%;
+  max-width: 700px;
+
+  margin-top: 30px;
+
+  background: white;
+  border-radius: 16px;
+
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+
+  overflow: hidden;
+}
+
+.servisi-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 16px 18px;
+
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.servisi-header h2 {
+  font-size: 18px;
+}
+
+.servisi-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.servis-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 14px 18px;
+
+  border-bottom: 1px solid #f1f5f9;
+
+  transition: 0.2s ease;
+}
+
+.servis-main {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+/* da je datum manji */
+.small {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.servis-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* edita servis */
+.edit-servis-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 9px 14px;
+
+  border-radius: 10px;
+
+  background: #2563eb;
+  color: white;
+
+  text-decoration: none;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  transition: 0.2s ease;
+}
+
+.edit-servis-btn:hover {
+  background: #1d4ed8;
+}
+
+/* brise samo servis */
+.delete-servis-btn {
+  background: #dc2626;
+  color: white;
+
+  padding: 8px 12px;
+
+  border-radius: 10px;
+  border: none;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.delete-servis-btn:hover {
+  background: #b91c1c;
+}
+

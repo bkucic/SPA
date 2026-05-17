@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="/styles/base.css">
+  <link rel="stylesheet" href="/styles/automobili.css">
+  <link rel="stylesheet" href="/styles/modal.css">
+  <script src="/scripts/servisiPopup.js" defer></script>
+</head>
+
+<body>
+
+  <%- include("partials/header_kupac") %>
+
+    <h1 class="page-title">Usporedba vozila</h1>
+
+    <% const l=2 - vozila.length; for (let i=0; i < l; i++) { vozila.push(null); } %>
+
+      <div class="cars-container">
+
+        <% vozila.forEach(function(vozilo) { %>
+          <% if (vozilo) { %>
+
+            <div class="car-card">
+
+              <div class="car-header">
+
+                <h2>
+                  <%= vozilo.naziv %>
+                </h2>
+
+                <button type="button" class="service-button" onclick="openServiceModal('<%= vozilo.sifra %>')">
+
+                  Servisi
+
+                </button>
+
+              </div>
+
+              <div class="car-info">
+
+                <div class="info-section">
+
+                  <h3>
+                    Marka: <%= vozilo.marka_naziv %>
+                  </h3>
+
+                </div>
+
+                <div class="info-section">
+
+                  <h3>Osnovne informacije</h3>
+
+                  <p>
+                    <strong>Boja:</strong>
+                    <%= vozilo.boja %>
+                  </p>
+
+                  <p>
+                    <strong>Oblik:</strong>
+                    <%= vozilo.oblik %>
+                  </p>
+
+                </div>
+
+                <div class="info-section">
+
+                  <h3>Motor</h3>
+
+                  <p>
+                    <strong>Naziv:</strong>
+                    <%= vozilo.motor_naziv %>
+                  </p>
+
+                  <p>
+                    <strong>Volumen:</strong>
+                    <%= vozilo.volumen %>
+                  </p>
+
+                  <p>
+                    <strong>Broj cilindara:</strong>
+                    <%= vozilo.broj_cilindara %>
+                  </p>
+
+                  <p>
+                    <strong>Konfiguracija:</strong>
+                    <%= vozilo.konfiguracija %>
+                  </p>
+
+                </div>
+
+                <div class="info-section">
+
+                  <h3>Gume</h3>
+
+                  <p>
+                    <strong>Naziv:</strong>
+                    <%= vozilo.guma_naziv %>
+                  </p>
+
+                  <p>
+                    <strong>Širina:</strong>
+                    <%= vozilo.sirina %>
+                  </p>
+
+                  <p>
+                    <strong>Omjer visine i širine:</strong>
+                    <%= vozilo.omjer_visine_i_sirine %>
+                  </p>
+
+                  <p>
+                    <strong>Struktura:</strong>
+                    <%= vozilo.struktura %>
+                  </p>
+
+                  <p>
+                    <strong>Veličina kotača:</strong>
+                    <%= vozilo.velicina_kotaca %>
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              <!-- servisi -->
+              <div id="services-<%= vozilo.sifra %>" style="display: none;">
+                <h2>Servisi vozila: <%= vozilo.naziv %>
+                </h2>
+                <% const servisiVozilo=[]; for (let i=0; i < servisi.length; i++) { if
+                  (servisi[i].vozilo_sifra==vozilo.sifra) { servisiVozilo.push(servisi[i]); } } %>
+
+                  <% if (servisiVozilo && servisiVozilo.length> 0) { %>
+
+                    <ul>
+
+                      <% servisiVozilo.forEach(function(servis) { %>
+
+                        <li>
+
+                          <strong>
+                            <%= servis.naziv %>
+                          </strong>
+
+                          -
+                          <%= new Date(servis.datum).toLocaleDateString("hr-HR") %>
+
+                        </li>
+
+                        <% }) %>
+
+                    </ul>
+
+                    <% } else { %>
+
+                      <p>
+                        Nema servisa.
+                      </p>
+
+                      <% } %>
+
+              </div>
+
+            </div>
+            <% } else { %>
+
+              <!-- prazno -->
+
+              <div class="car-card empty-card">
+
+                <div class="car-header">
+                  <h2>Dodajte vozilo za usporedbu.</h2>
+                </div>
+
+                <div class="car-info">
+                </div>
+
+              </div>
+
+              <% } %>
+
+                <% }) %>
+
+      </div>
+      <!-- modal za servise -->
+      <div id="serviceModal" class="modal" style="display: none;">
+
+        <div class="modal-content">
+
+          <span class="close-modal" onclick="closeServiceModal()">
+
+            &times;
+
+          </span>
+
+          <div id="serviceList"></div>
+
+        </div>
+
+      </div>
+</body>
+
+</html>

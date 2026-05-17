@@ -1,0 +1,85 @@
+/* gumb za dodavat na vrhu stanice */
+.addBtn {
+  margin-bottom: 15px;
+}
+
+.addBtn a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #2563eb;
+  color: white;
+
+  padding: 10px 14px;
+  border-radius: 10px;
+
+  text-decoration: none;
+  font-weight: 600;
+
+  transition: 0.2s ease;
+}
+
+.addBtn a:hover {
+  background-color: #1d4ed8;
+}
+
+/* tablica */
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+  background-color: white;
+
+  border-radius: 14px;
+  overflow: hidden;
+
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+thead {
+  background-color: #1f2937;
+  color: white;
+}
+
+th {
+  text-align: left;
+  padding: 12px 14px;
+  font-size: 14px;
+}
+
+td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 14px;
+}
+
+tbody tr:hover {
+  background-color: #f3f4f6;
+}
+
+/* izbrisi */
+td form {
+  display: inline;
+}
+
+td form button {
+  background-color: #dc2626;
+  color: white;
+
+  border: none;
+  border-radius: 10px;
+
+  padding: 8px 12px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+td form button:hover {
+  background-color: #b91c1c;
+}

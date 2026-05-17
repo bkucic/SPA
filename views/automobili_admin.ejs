@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/styles/base.css">
+    <link rel="stylesheet" href="/styles/prikaz_generic.css">
+    <link rel="stylesheet" href="/styles/automobili.css">
+    <link rel="stylesheet" href="/styles/automobili_admin.css">
+    <link rel="stylesheet" href="/styles/buttons.css">
+  </head>
+
+  <body>
+    <%- include("partials/header_admin") %>
+
+    <div class="addBtn">
+      <a href="/automobili/unos">
+        Dodaj automobil
+      </a>
+    </div>
+
+    <div class="cars-container">
+      
+      <% vozila.forEach(function(vozilo) { %>
+        
+        <div class="car-card">
+
+          <div class="car-header">
+            <h2>
+              <%= vozilo.naziv %>
+            </h2>
+            <a href="/automobili/<%= vozilo.sifra %>">
+              Uredi
+            </a>
+
+            <span class="car-id">
+              Šifra: <%= vozilo.sifra %>
+            </span>
+          </div>
+
+          <div class="car-info">
+
+            <div class="info-section">
+              <h3>Osnovne informacije</h3>
+
+              <p>
+                <strong>Boja:</strong>
+                <%= vozilo.boja %>
+              </p>
+
+              <p>
+                <strong>Oblik:</strong>
+                <%= vozilo.oblik %>
+              </p>
+            </div>
+
+            <div class="info-section">
+              <h3>Marka</h3>
+
+              <p>
+                <strong>Marka šifra:</strong>
+                <%= vozilo.marka_sifra %>
+              </p>
+
+              <p>
+                <strong>Marka naziv:</strong>
+                <%= vozilo.marka_naziv %>
+              </p>
+            </div>
+
+            <div class="info-section">
+              <h3>Motor</h3>
+
+              <p>
+                <strong>Motor šifra:</strong>
+                <%= vozilo.motor_sifra %>
+              </p>
+
+              <p>
+                <strong>Motor naziv:</strong>
+                <%= vozilo.motor_naziv %>
+              </p>
+            </div>
+
+            <div class="info-section">
+              <h3>Gume</h3>
+
+              <p>
+                <strong>Guma šifra:</strong>
+                <%= vozilo.guma_sifra %>
+              </p>
+
+              <p>
+                <strong>Guma naziv:</strong>
+                <%= vozilo.guma_naziv %>
+              </p>
+            </div>
+
+            
+
+          </div>
+
+        </div>
+
+      <% }) %>
+
+    </div>
+  </body>
+</html>

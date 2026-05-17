@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="/styles/base.css">
+    <link rel="stylesheet" href="/styles/unos_generic.css">
+</head>
+
+<body>
+    <%- include("partials/header_admin") %>
+        <div class="page-container">
+            <h1>Unos Motora</h1>
+
+            <form action="/motori/unos" method="POST" class="main_form">
+
+                <div>
+                    <label for="naziv">Naziv:</label>
+                    <input type="text" maxlength="20" required id="naziv" name="naziv">
+                </div>
+
+                <div>
+                    <label for="volumen">Volumen:</label>
+                    <input type="number" step="100" required id="volumen" name="volumen">
+                </div>
+
+                <div>
+                    <label for="broj_cilindara">Broj cilindara:</label>
+                    <input type="number" required id="broj_cilindara" name="broj_cilindara">
+                </div>
+
+                <div>
+                    <label for="konfiguracija">Konfiguracija:</label>
+                    <input type="text" maxlength="20" required id="konfiguracija" name="konfiguracija">
+                </div>
+
+                <button type="submit" class="submitBtn">Spremi promjene</button>
+            </form>
+        </div>
+</body>
+
+</html>
