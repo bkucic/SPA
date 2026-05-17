@@ -1,12 +1,12 @@
 # Sustav za prodaju automobila
 
 Za instalaciju sustava potrebno je:
-- u terminalu pozicionirati se u korijenski direktorij (SPA-main) i pokrenuti naredbu "npm install"
-- napraviti .env file koji sadrži varijable okruženja DB, koji predstavlja podatke za povezivanje na PostgreSQL bazu u obliku linka, i SESSION_SECRET, nasumično generirani string koji se koristi za generiranje korisničkih sjednica.  
+- napraviti novu PostgreSQL bazu podataka i u njoj izvršiti upite koji se nalaze u SkriptaIzradaPunjenjeBaze.sql
+- napraviti .env file koji sadrži varijable okruženja DB, koji predstavlja podatke za povezivanje na bazu podataka u obliku linka, i SESSION_SECRET, nasumično generirani string koji se koristi za generiranje korisničkih sjednica.  
 (primjeri:  
 DB=postgres://postgres:password@localhost:5432/SPA  
 SESSION_SECRET=0a639c7244c48326afa4c41cfd8996f4e34b617d6a4c06bdd6764376e0b1a99901dc9be72d6c47f70a272ebee7a775643349f308a5ea18f99f5d4965ffcabc8b)
-- u bazi podataka izvršiti upite koji se nalaze u SkriptaIzradaPunjenjeBaze.sql
+- u terminalu pozicionirati se u korijenski direktorij (SPA-main) i pokrenuti naredbu "npm install"
 
 Za pokretanje servera na web adresi localhost:3000 potrebno je pokrenuti naredbu "node --env-file=.env app.js".
 
